@@ -11,7 +11,7 @@ class FileItemsController < ApplicationController
     @file_item = FileItem.new(file_item_params)
 
     if @file_item.save
-      redirect_to users_file_items_path, notice: "The file #{@file_item.name} has been uplaoded"
+      redirect_to user_file_item_path, notice: "The file #{@file_item.name} has been uplaoded"
     else
       render "new"
     end
