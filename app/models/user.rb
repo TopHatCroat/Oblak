@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :file_items, dependent: :destroy
+  accepts_nested_attributes_for :file_items
+
 
   # Returns the hash digest of the given string.
   def User.digest(string)

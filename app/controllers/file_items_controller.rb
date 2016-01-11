@@ -11,7 +11,8 @@ class FileItemsController < ApplicationController
     @file_item = FileItem.new(file_item_params)
 
     if @file_item.save
-      redirect_to user_file_item_path, notice: "The file #{@file_item.name} has been uplaoded"
+      format.html { redirect_to file_items_index_path, flash[:success] = "The file #{@file_item.name} has been uplaoded" }
+      format.json { head :no_content }
     else
       render "new"
     end
@@ -21,7 +22,8 @@ class FileItemsController < ApplicationController
   def destroy
     @file_item = FileItem.find(params[:id])
     @file_item.destroy
-    redirect_to recumes_path, notice: "The file #{@file_item.name} has been deleted"
+    format.html { redirect_to file_items_path, flash[:danger] = "The file #{@file_item.name} has been deleted" }
+    format.json {}
   end
 
   private
