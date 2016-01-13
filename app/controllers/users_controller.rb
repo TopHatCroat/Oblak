@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @files = @user.file_items.all
   end
 
   def new #ako ovaj pogled prođe izvršava se "create"

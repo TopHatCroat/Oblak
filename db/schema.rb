@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110173759) do
+ActiveRecord::Schema.define(version: 20160112170201) do
 
   create_table "file_items", force: :cascade do |t|
     t.string   "name"
     t.string   "attachment"
     t.float    "size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.string   "content_type"
   end
+
+  add_index "file_items", ["user_id"], name: "index_file_items_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

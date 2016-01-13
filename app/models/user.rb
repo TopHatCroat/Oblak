@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  has_many :file_items, dependent: :destroy
+  has_many :file_items, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :file_items
 
 
