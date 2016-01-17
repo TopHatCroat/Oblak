@@ -29,7 +29,7 @@ class FileItemsController < ApplicationController
 
     @file_item = @user.file_items.new(file_item_params)
 
-    @file_item.name = params[:original_filename] if @file_item.name == ""
+    @file_item.name = :original_filename if @file_item.name == ""
 
     respond_to do |format|
       if @file_item.save
